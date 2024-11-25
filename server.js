@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // Add CORS middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow only your frontend
+    origin: "https://web-apps-732ac.web.app", // Allow only your frontend
     methods: ["GET", "POST"], // Allowed methods
     credentials: true, // Allow credentials (cookies)
   })
@@ -18,7 +18,7 @@ app.use(
 // Initialize Socket.IO with CORS settings
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Allow only your frontend origin
+    origin: "https://web-apps-732ac.web.app", // Allow only your frontend origin
     methods: ["GET", "POST"],
     credentials: true,
   },
