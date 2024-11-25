@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // Add CORS middleware
 app.use(
   cors({
-    origin: "https://web-apps-732ac.web.app", // Allow only your frontend
+    origin: ["https://web-apps-732ac.web.app", "http://192.168.0.101:5173"], // Allow your frontend and local network IP
     methods: ["GET", "POST"], // Allowed methods
     credentials: true, // Allow credentials (cookies)
   })
@@ -18,7 +18,7 @@ app.use(
 // Initialize Socket.IO with CORS settings
 const io = new Server(server, {
   cors: {
-    origin: "https://web-apps-732ac.web.app", // Allow only your frontend origin
+    origin: ["https://web-apps-732ac.web.app", "http://192.168.0.101:5173"], // Allow your frontend and local network IP
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -58,6 +58,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+server.listen(3000, "0.0.0.0", () => {
+  console.log("Server running on http://0.0.0.0:3000");
 });
